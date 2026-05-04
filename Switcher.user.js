@@ -1,18 +1,18 @@
 // ==UserScript==
-// @name               Google & baidu Switcher (ALL in One)
-// @name:en            Search Engine Assistant
-// @name:zh-CN         优雅的搜索引擎助手
-// @name:zh-TW         優雅的搜尋引擎助手
-// @name:ru            Помощник поисковой системы
-// @name:ja            優雅な検索エンジン助手
-// @version            2026.05.02.1
-// @author             F9y4ng
-// @description        Alias "Search Engine Assistant", le script aide à la navigation entre les moteurs de recherche, à la personnalisation des préférences, à la mise en évidence des mots-clés, à l'élimination des redirections et des publicités et au filtrage des résultats. Compatible avec Baidu, Google, Bing, Duckduckgo, Yandex, Sogou, Qwant, Ecosia, You, Startpage, Brave, Yahoo, Yep, Mojeek, searXNG et bien d'autres moteurs de recherche célèbres.
-// @description:en     "Elegant search engine assistant" allows switching between engines; supports custom engines, keyword highlighting; offers redirect removal, ad blocking, keyword filtering, and auto-updates; compatible with Baidu, Google, Bing, Duckduckgo, Yandex, Sogou, Qwant, Ecosia, You, Startpage, Brave, Yahoo, Yep, Mojeek, searXNG and more.
-// @description:zh-CN  “优雅的搜索引擎助手”方便用户在不同的搜索引擎之间跳转；支持自定义常用搜索引擎、关键词高亮渲染；还提供去除搜索链接重定向、屏蔽搜索结果广告、使用关键词过滤搜索结果、和自动更新检测等高级功能；兼容如Baidu、Google、Bing、Duckduckgo、Yandex、Sogou、Qwant、Ecosia、You、Startpage、Brave、Yahoo、Yep、Mojeek、searXNG等多个搜索引擎。
-// @description:zh-TW  「優雅的搜尋引擎助手」方便使用者在不同的搜尋引擎之間跳轉；支援自定義常用搜尋引擎、關鍵詞高亮渲染；還提供去除搜尋連結重定向、遮蔽搜尋結果廣告、使用關鍵詞過濾搜尋結果、和自動更新檢測等高階功能；相容如Baidu、Google、Bing、Duckduckgo、Yandex、Sogou、Qwant、Ecosia、You、Startpage、Brave、Yahoo、Yep、Mojeek、searXNG等多個搜尋引擎。
-// @description:ru     «Элегантный Помощник поисковой системы» позволяет легко переключаться между поисковыми системами и поддерживает такие дополнительные функции, как настройка, удаление редиректов и рекламы. Совместим с такими поисковыми системами, как Baidu, Google, Bing, Duckduckgo, Yandex, Sogou, Qwant, Ecosia, You, Startpage, Brave, Yahoo, Yep, Mojeek и searXNG.
-// @description:ja     「優雅な検索エンジン助手」は、検索エンジン間の切り替えを容易にし、カスタムエンジン、キーワードハイライト、リダイレクト削除、広告ブロック、キーワードフィルタリング、自動更新をサポートし、Baidu、Google、Bing、Duckduckgo、Yandex、Sogou、Qwant、Ecosia、You、Startpage、Brave、Yahoo、Yep、Mojeek、searXNGなどと互換性があります。
+// @name               Search Engine Assistant (Custom Fork)
+// @name:en            Search Engine Assistant (Custom Fork)
+// @name:zh-CN         搜索引擎助手 (自用扩展版)
+// @name:zh-TW         搜尋引擎助手 (自用擴展版)
+// @name:ru            Помощник поисковой системы (Custom Fork)
+// @name:ja            検索エンジン助手 (Custom Fork)
+// @version            2026.05.04.1
+// @author             F9y4ng (forked & customized)
+// @description        Custom fork with Bilibili & Xiaohongshu support, Bing quick-jump buttons. Compatible with Baidu, Google, Bing, Duckduckgo, Yandex, Sogou, Qwant, Ecosia, You, Startpage, Brave, Yahoo, Yep, Mojeek, searXNG, Bilibili, Xiaohongshu and more.
+// @description:en     Custom fork adding Bilibili & Xiaohongshu engines, Bing quick-jump buttons (Google/Bilibili/Xiaohongshu). Supports engine switching, keyword highlighting, redirect removal, ad blocking, keyword filtering. Compatible with 20+ search engines.
+// @description:zh-CN  自用扩展版：新增哔哩哔哩、小红书搜索引擎支持，必应页面快捷跳转按钮（Google/哔哩哔哩/小红书）。支持搜索引擎跳转、关键词高亮、去重定向、屏蔽广告、关键词过滤等功能，兼容20+搜索引擎。
+// @description:zh-TW  自用擴展版：新增嗶哩嗶哩、小紅書搜尋引擎支援，必應頁面快捷跳轉按鈕（Google/嗶哩嗶哩/小紅書）。支援搜尋引擎跳轉、關鍵詞高亮、去重定向、遮蔽廣告、關鍵詞過濾等功能，相容20+搜尋引擎。
+// @description:ru     Кастомная версия с поддержкой Bilibili и Xiaohongshu, быстрыми кнопками перехода в Bing. Совместим с 20+ поисковыми системами.
+// @description:ja     カスタム版：Bilibili・Xiaohongshuエンジン追加、Bing高速ジャンプボタン（Google/Bilibili/Xiaohongshu）対応。20+検索エンジン互換。
 // @icon               data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFC0lEQVR4nO2WbUxTVxjHj8IMWZbt05Yt28y2D3yQRN0++MVsmXFbNjBixbFpkSGvXUt5GRpkgOCgIsgqOANUQCXYOQUKCMqrtDAmiorSwioIytsoIL3ce1olQ+W/3KsFlYov8yUmPsn/w725J//fec7zPPcQ8jJexoscABwsFosLpfRTq9W6CIDTMzFmWfYjSmkux3EWSilsYll2YnBwsNxsNi99auaUUn+O48ZZlkODrgW7lAVIjM9DWuohHD3yF8xmBhzHTXZ2du4B4PhEzVmWDeZ32nq+AxvESfDekIbwHbUIV51F+E4dAuTZEK2IQU3VKSEjBoNBQwiZ80TMx8bGPuY4buLsGSPc3WIQvKcVYVrMUPChAXh4JKC0uEGAKCsri/pfxgCcKKULKKXVfHo9RfGQ5Brtmk9BFJux0jUGl7r7MTAwMLR48eI3H9nYarW+c7vQrtqKTFOgxXrZ3lnNbfJNqEJq8kFhnVKplD+q+SKO40x8ofHn+dvOQuxIUsPPJwUbdttP/b2Sakbh6ZEgAJSUlPxOCJn7UOYMw7xBKb1sMo1AFrgTP/imI0ypw0+7GhG4+Q/Ij12dMgmpnoC02Axp0RUEl1sQVjc5DVE3iS8/3ygA9PT09HV3dwdbLJa3HghAKY3lF23eqIJ/bKn9HdZNIuhAH2S5fyNNewWqE2OIK+6Fb1Yb5Eett+BqJvDVsk3o7zdhdNRsmxPXurq6tswKwLKs0aC/iFWiBITV3bQLEJB3CcmVJuhHgA5mWkc7JhCkaoO8YhySQyYsWxqG1e5xcP0iEnJJOppPtgkger1+/wxjAPMopdH8ECk6rIXXpsP2K7zcgo3qi2g3321uU2HbOPxyO4VvQ6v/vZ2xm5Bnt0K0Mg5VFSeFQaVWq/3vNH+FUlrJ07WcNWJLVA7WRtgHCFL3ocAwbtec1wUzIM1pR2jtjRlrZQVDcHeNBl9fRqPRQAh5zXbuUbz5vpxyrFn9C8JTqhB8eNAugP++LtRcun5fAF7RBZeFY7C33jtcLbQzy7I35s+f/4kAwLfcuZYLELlvhbzi2qztFXigD0Xts2SAAWR8Bmqu213vta0e6cpCoRbEYvFavuff5h/2ZpfDO77igf0tO8Ih8mA3jKP2AUrPU/jsbkXocfsF/H1sJbIyjwgAy5cv/46f8R/wD9lZ5VgXV/1QQyZgfzeUx0fQdg9E7fkxRCY2Iij1DPyyO2bUQejxSazw2I7Tze0YGhoyOzo6fiZcKhiGYfifjJu7YrpyZ1PdTQTm9yBkvxGZjQz2NVMoyv6BX3oLQuL/RFiMDpLkU/DbY5w+irpJeEaWQiLPEnZfWVlZSghxFmqgv78/lX+5XVkC11VJ8EpqgM+ucw+Ut7IZXtsaIFbo4JVyAusSdfCM0EC2ueYWRMpprE9pgjhRCzfPX+ErycDw8ChMJtOos7OzFyFknq0NnXp7e/U8RK1Oj58TixAQkvNYEvumw+2bGIREVQsQPpIcfLtGgYrac3z/86lnRCJROCHkvbsGUX5+/utNTU0FDMOM33nNehztTiuEx8otiIg+BtmPGVBszRPe19fXV7u4uHgTQt6/3ySes2TJkgURERGBCoUi5nGk1+ubeDNVRilErtEI9EmZuhc4ODh8PZX2pxVardbJYDAcuzMjw8PDY1KpNJYQ8i55RjE3MzPTR6PRqFUqVebChQv5tH9InkPMIYS8+jyMyQsT/wHRI0Gp4kJwPQAAAABJRU5ErkJggg==
 // @namespace          https://github.com/F9y4ng/GreasyFork-Scripts/
 // @homepage           https://f9y4ng.github.io/GreasyFork-Scripts/
@@ -2525,14 +2525,18 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
                   if (document.body.classList.contains("b_dark")) buttonSection.classList.add(def.const.darkmode);
                   if (IS_REAL_GECKO && CUR_PATH_NAME.includes("riverview/relatedvideo")) return buttonSection.style.setProperty("--margin", "3px 1px 0 0");
                   const formBox = qS(".b_searchboxForm:has(input.b_searchbox)");
-                  if (!formBox || !/^detail(?:V|v)2$/.test(getUrlParam("view"))) return;
-                  formBox.classList.add(`${def.const.scrollbarsV2}.width`);
-                  buttonSection.style.setProperty("--margin", "1px -2px 0 6px");
-                  qA(`input`, shadow).forEach(i => i.classList.add(def.const.scrollbarsV2));
+                  if (formBox && /^detail(?:V|v)2$/.test(getUrlParam("view"))) {
+                    formBox.classList.add(`${def.const.scrollbarsV2}.width`);
+                    buttonSection.style.setProperty("--margin", "1px -2px 0 6px");
+                    qA(`input`, shadow).forEach(i => i.classList.add(def.const.scrollbarsV2));
+                  }
 
                   // Add custom jump buttons (Google, Bilibili, Xiaohongshu)
+                  if (qS("#bing-custom-jump-buttons")) return;
                   const searchBox = qS(".b_searchbox");
-                  if (!searchBox || qS("#bing-custom-jump-buttons")) return;
+                  const searchBoxContainer = searchBox?.closest(".b_searchboxForm");
+                  if (!searchBox || !searchBoxContainer) return;
+
                   const jumpButtonsContainer = cE("div", { id: "bing-custom-jump-buttons" });
                   const jumpShadow = def.const.attachShadow.call(jumpButtonsContainer, { mode: "closed" });
                   const jumpButtonsHtml = `
@@ -2555,28 +2559,25 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
                   jumpShadow.innerHTML = tTP.createHTML(jumpButtonsHtml);
                   updateAdoptedStyleSheets(jumpShadow, jumpButtonsCss, "bing-jump-buttons");
 
-                  const searchBoxContainer = searchBox.closest(".b_searchboxForm");
-                  if (searchBoxContainer) {
-                    searchBoxContainer.style.position = "relative";
-                    searchBoxContainer.appendChild(jumpButtonsContainer);
+                  searchBoxContainer.style.position = "relative";
+                  searchBoxContainer.appendChild(jumpButtonsContainer);
 
-                    qA(".jump-btn", jumpShadow).forEach(btn => {
-                      btn.addEventListener("click", () => {
-                        const engine = btn.getAttribute("data-engine");
-                        const query = searchBox.value.trim();
-                        if (!query) return;
-                        const encodedQuery = encodeURIComponent(query);
-                        let targetUrl = "";
-                        if (engine === "google") targetUrl = `https://www.google.com/search?q=${encodedQuery}`;
-                        else if (engine === "bilibili") targetUrl = `https://search.bilibili.com/all?keyword=${encodedQuery}`;
-                        else if (engine === "xiaohongshu") targetUrl = `https://www.xiaohongshu.com/search_result?keyword=${encodedQuery}`;
-                        if (targetUrl) {
-                          if (localWindow) top.location.href = targetUrl;
-                          else GMopenInTab(targetUrl, false);
-                        }
-                      });
+                  qA(".jump-btn", jumpShadow).forEach(btn => {
+                    btn.addEventListener("click", () => {
+                      const engine = btn.getAttribute("data-engine");
+                      const query = searchBox.value.trim();
+                      if (!query) return;
+                      const encodedQuery = encodeURIComponent(query);
+                      let targetUrl = "";
+                      if (engine === "google") targetUrl = `https://www.google.com/search?q=${encodedQuery}`;
+                      else if (engine === "bilibili") targetUrl = `https://search.bilibili.com/all?keyword=${encodedQuery}`;
+                      else if (engine === "xiaohongshu") targetUrl = `https://www.xiaohongshu.com/search_result?keyword=${encodedQuery}`;
+                      if (targetUrl) {
+                        if (localWindow) top.location.href = targetUrl;
+                        else GMopenInTab(targetUrl, false);
+                      }
                     });
-                  }
+                  });
                 },
               },
               duckduckgo: {
