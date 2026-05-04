@@ -18,7 +18,7 @@
 // @homepage           https://f9y4ng.github.io/GreasyFork-Scripts/
 // @homepageURL        https://f9y4ng.github.io/GreasyFork-Scripts/
 // @supportURL         https://github.com/F9y4ng/GreasyFork-Scripts/issues
-// @updateURL          https://github.com/F9y4ng/GreasyFork-Scripts/raw/master/Google%20%26%20Baidu%20Switcher.meta.js
+// @updateURL          none
 // @downloadURL        https://github.com/F9y4ng/GreasyFork-Scripts/raw/master/Google%20%26%20Baidu%20Switcher.user.js
 // @require            https://f9y4ng.github.io/GreasyFork-Scripts/lib/parallelGMxhr.js#sha256-qo7Imc1jg2AryApKESDzER/AO92l55w1dH7+xsxrx2I=
 // @match              *://www.baidu.com/*
@@ -43,6 +43,8 @@
 // @match              *://yep.com/*
 // @match              *://www.mojeek.com/search*
 // @match              *://au.priv.au/search*
+// @match              *://search.bilibili.com/*
+// @match              *://www.xiaohongshu.com/search_result*
 // @match              *://*.google.ad/search?*
 // @match              *://*.google.ae/search?*
 // @match              *://*.google.al/search?*
@@ -1439,7 +1441,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               splitTypeName: "udm",
               mainSelector: "form button[type='submit']",
               overrideCss: `#pnnext>span:nth-child(2){clear:left}`,
-              buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;z-index:99999;display:inline-flex;margin:-1px 5px 0 -3px;justify-content:center;align-items:center;flex-wrap:nowrap}.ACRAdd{border-left:1px solid #dadce0;height:65%;padding:0 10px 0 0}#${def.const.leftButton},#${def.const.leftButton}{display:inline-block;margin:0 2px 0 0}input{margin:0;height:40px;min-width:90px;border:0;background:#0b57d0;color:#fff;box-shadow:0 0 2px #00000059;font-weight:500;font-size:16px;line-height:100%;text-shadow:none;-webkit-text-stroke:0 transparent;cursor:pointer}#${def.const.leftButton} input{padding:0 12px 1px 18px;border-radius:24px 0 0 24px}#${def.const.rightButton} input{padding:0 18px 1px 12px;border-radius:0 24px 24px 0}input:hover{opacity:.88}:host(.${def.const.scrollspan}){min-height:24px!important}.${def.const.scrollbars}{display:inline-block;margin:0;padding-bottom:0!important;height:24px!important;font-size:12px!important}`,
+              buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;z-index:99999;display:inline-flex;margin:-1px 5px 0 -3px;justify-content:center;align-items:center;flex-wrap:nowrap}.ACRAdd{border-left:1px solid #dadce0;height:65%;padding:0 10px 0 0}#${def.const.leftButton},#${def.const.leftButton}{display:inline-block;margin:0 2px 0 0}input{margin:0;height:40px;min-width:90px;border:2px solid #f6f7f8;background:#0b57d0;color:#fff;box-shadow:0 0 2px #00000059;font-weight:500;font-size:16px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);-webkit-text-stroke:0 transparent;cursor:pointer;transition:all 0.3s ease}#${def.const.leftButton} input{padding:0 12px 1px 18px;border-radius:24px 0 0 24px}#${def.const.rightButton} input{padding:0 18px 1px 12px;border-radius:0 24px 24px 0}input:hover{opacity:.88;border-color:#fff;box-shadow:0 4px 12px rgba(11,87,208,0.4);transform:translateY(-1px)}:host(.${def.const.scrollspan}){min-height:24px!important}.${def.const.scrollbars}{display:inline-block;margin:0;padding-bottom:0!important;height:24px!important;font-size:12px!important}`,
               darkModeCss: `:host(.${def.const.darkmode}) input{background:#c2e7ff;color:#001d35}:host(.${def.const.darkmode}) .ACRAdd{border-left:1px solid #f8f9fa40}:host(.${def.const.darkmode}) input:hover{opacity:.85}}`,
               resultListProp: { qs: `div.MjjYud div.Ww4FFb.vt6azd[data-hveid^="C"][data-hveid$="AA"]:not(:has(div[jscontroller="TvBckd"]))`, delay: 10 },
               keywords: ".aCOpRe em,.aCOpRe a em,.yXK7lf em,.yXK7lf a em,.st em,.st a em,.c2xzTb b,em.qkunPe",
@@ -1779,6 +1781,44 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               antiRedirectFn: null,
               antiAdsFn: null,
             },
+            bilibili: {
+              siteTypeID: 19,
+              siteButtonName: IS_CHN ? "哔哩哔哩" : "𝐁𝐢𝐥𝐢𝐛𝐢𝐥𝐢",
+              siteNickName: IS_CHN ? "哔哩哔哩 搜索" : "𝐁𝐢𝐥𝐢𝐛𝐢𝐥𝐢",
+              siteHostName: "search.bilibili.com",
+              webURL: "https://search.bilibili.com/all?keyword=",
+              imageURL: "https://search.bilibili.com/all?keyword=",
+              imageType: [null],
+              splitTypeName: "",
+              mainSelector: ".search-button",
+              buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;display:inline-flex;margin:0 0 0 12px;padding:0;height:40px;justify-content:center;align-items:center;flex-wrap:nowrap;vertical-align:top}#${def.const.leftButton},#${def.const.rightButton}{display:inline-block;margin:0 2px 0 0;height:40px}input{margin:0;height:40px;min-width:90px;border:2px solid #f6f7f8;background:linear-gradient(135deg,#00a1d6 0%,#00d4ff 100%);color:#fff;vertical-align:top;font-weight:600;font-size:15px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);-webkit-text-stroke:0 transparent;cursor:pointer;transition:all 0.3s ease}#${def.const.leftButton} input{padding:0 14px 1px 20px;border-radius:20px 0 0 20px}#${def.const.rightButton} input{padding:0 20px 1px 14px;border-radius:0 20px 20px 0}input:hover{background:linear-gradient(135deg,#00b5e5 0%,#00e5ff 100%);border-color:#fff;box-shadow:0 4px 12px rgba(0,161,214,0.4);transform:translateY(-1px)}`,
+              resultListProp: { qs: `.video-list .video-item,.bili-video-card`, delay: 10 },
+              keywords: "em.keyword",
+              antiRedirectFn: null,
+              antiAdsFn: () => {
+                const selectors = `.ad-report,.ads-card,.commercial-card`;
+                deBounce({ fn: parseAntiAdvertising, delay: 20, timer: "bilibili_ad", immed: true })({ selectors, siteName: "Bilibili", isRemoveNodes: true });
+              },
+            },
+            xiaohongshu: {
+              siteTypeID: 20,
+              siteButtonName: IS_CHN ? "小红书" : "𝐗𝐢𝐚𝐨𝐡𝐨𝐧𝐠𝐬𝐡𝐮",
+              siteNickName: IS_CHN ? "小红书 搜索" : "𝐗𝐢𝐚𝐨𝐡𝐨𝐧𝐠𝐬𝐡𝐮",
+              siteHostName: "www.xiaohongshu.com",
+              webURL: "https://www.xiaohongshu.com/search_result?keyword=",
+              imageURL: "https://www.xiaohongshu.com/search_result?keyword=",
+              imageType: [null],
+              splitTypeName: "",
+              mainSelector: ".search-input",
+              buttonCssText: `:host(#${def.const.rndButtonID}){position:absolute;top:0;right:var(--right,unset);z-index:99999;display:inline-flex;margin:0;padding:0;height:40px;justify-content:center;align-items:center;flex-wrap:nowrap}#${def.const.leftButton},#${def.const.rightButton}{display:inline-block;margin:0 2px 0 0;height:40px}input{margin:0;height:40px;min-width:90px;border:2px solid #f6f7f8;background:linear-gradient(135deg,#ff2442 0%,#ff6b6b 100%);color:#fff;vertical-align:top;font-weight:600;font-size:15px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);-webkit-text-stroke:0 transparent;cursor:pointer;transition:all 0.3s ease}#${def.const.leftButton} input{padding:0 14px 1px 20px;border-radius:20px 0 0 20px}#${def.const.rightButton} input{padding:0 20px 1px 14px;border-radius:0 20px 20px 0}input:hover{background:linear-gradient(135deg,#ff4458 0%,#ff7f7f 100%);border-color:#fff;box-shadow:0 4px 12px rgba(255,36,66,0.4);transform:translateY(-1px)}`,
+              resultListProp: { qs: `section.note-item`, delay: 10 },
+              keywords: "span.highlight",
+              antiRedirectFn: null,
+              antiAdsFn: () => {
+                const selectors = `.ad-item,.ads-container`;
+                deBounce({ fn: parseAntiAdvertising, delay: 20, timer: "xhs_ad", immed: true })({ selectors, siteName: "Xiaohongshu", isRemoveNodes: true });
+              },
+            },
             other: { siteTypeID: 0 },
           };
 
@@ -1801,6 +1841,8 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
             YEP: listSite.yep.siteTypeID,
             MOJEEK: listSite.mojeek.siteTypeID,
             SEARXNG: listSite.searxng.siteTypeID,
+            BILIBILI: listSite.bilibili.siteTypeID,
+            XIAOHONGSHU: listSite.xiaohongshu.siteTypeID,
             OTHERS: listSite.other.siteTypeID,
           };
 
@@ -1823,6 +1865,8 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
             "yep\\.com$": { siteType: newSiteType.YEP, site: listSite.yep },
             "www\\.mojeek\\.com$": { siteType: newSiteType.MOJEEK, site: listSite.mojeek },
             "priv\\.au$": { siteType: newSiteType.SEARXNG, site: listSite.searxng },
+            "search\\.bilibili\\.com$": { siteType: newSiteType.BILIBILI, site: listSite.bilibili },
+            "www\\.xiaohongshu\\.com$": { siteType: newSiteType.XIAOHONGSHU, site: listSite.xiaohongshu },
           };
 
           const searchProperties = {
@@ -2485,6 +2529,54 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
                   formBox.classList.add(`${def.const.scrollbarsV2}.width`);
                   buttonSection.style.setProperty("--margin", "1px -2px 0 6px");
                   qA(`input`, shadow).forEach(i => i.classList.add(def.const.scrollbarsV2));
+
+                  // Add custom jump buttons (Google, Bilibili, Xiaohongshu)
+                  const searchBox = qS(".b_searchbox");
+                  if (!searchBox || qS("#bing-custom-jump-buttons")) return;
+                  const jumpButtonsContainer = cE("div", { id: "bing-custom-jump-buttons" });
+                  const jumpShadow = def.const.attachShadow.call(jumpButtonsContainer, { mode: "closed" });
+                  const jumpButtonsHtml = `
+                    <div class="jump-buttons-wrapper">
+                      <button class="jump-btn jump-btn-google" data-engine="google" title="跳转到 Google 搜索">Google</button>
+                      <button class="jump-btn jump-btn-bilibili" data-engine="bilibili" title="跳转到哔哩哔哩搜索">bilibili</button>
+                      <button class="jump-btn jump-btn-xiaohongshu" data-engine="xiaohongshu" title="跳转到小红书搜索">小红书</button>
+                    </div>
+                  `;
+                  const jumpButtonsCss = `
+                    .jump-buttons-wrapper{position:absolute;top:50%;right:10px;transform:translateY(-50%);z-index:99999;display:inline-flex;gap:8px;align-items:center}
+                    .jump-btn{margin:0;padding:0 16px;height:36px;border:2px solid #f6f7f8;border-radius:18px;color:#fff;font-weight:600;font-size:14px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);cursor:pointer;transition:all 0.3s ease;white-space:nowrap}
+                    .jump-btn-google{background:#0b57d0}
+                    .jump-btn-bilibili{background:linear-gradient(135deg,#00a1d6 0%,#00d4ff 100%)}
+                    .jump-btn-xiaohongshu{background:linear-gradient(135deg,#ff2442 0%,#ff6b6b 100%)}
+                    .jump-btn-google:hover{border-color:#fff;box-shadow:0 4px 12px rgba(11,87,208,0.4);transform:translateY(-1px)}
+                    .jump-btn-bilibili:hover{border-color:#fff;box-shadow:0 4px 12px rgba(0,161,214,0.4);transform:translateY(-1px)}
+                    .jump-btn-xiaohongshu:hover{background:linear-gradient(135deg,#ff4458 0%,#ff7f7f 100%);border-color:#fff;box-shadow:0 4px 12px rgba(255,36,66,0.4);transform:translateY(-1px)}
+                  `;
+                  jumpShadow.innerHTML = tTP.createHTML(jumpButtonsHtml);
+                  updateAdoptedStyleSheets(jumpShadow, jumpButtonsCss, "bing-jump-buttons");
+
+                  const searchBoxContainer = searchBox.closest(".b_searchboxForm");
+                  if (searchBoxContainer) {
+                    searchBoxContainer.style.position = "relative";
+                    searchBoxContainer.appendChild(jumpButtonsContainer);
+
+                    qA(".jump-btn", jumpShadow).forEach(btn => {
+                      btn.addEventListener("click", () => {
+                        const engine = btn.getAttribute("data-engine");
+                        const query = searchBox.value.trim();
+                        if (!query) return;
+                        const encodedQuery = encodeURIComponent(query);
+                        let targetUrl = "";
+                        if (engine === "google") targetUrl = `https://www.google.com/search?q=${encodedQuery}`;
+                        else if (engine === "bilibili") targetUrl = `https://search.bilibili.com/all?keyword=${encodedQuery}`;
+                        else if (engine === "xiaohongshu") targetUrl = `https://www.xiaohongshu.com/search_result?keyword=${encodedQuery}`;
+                        if (targetUrl) {
+                          if (localWindow) top.location.href = targetUrl;
+                          else GMopenInTab(targetUrl, false);
+                        }
+                      });
+                    });
+                  }
                 },
               },
               duckduckgo: {
