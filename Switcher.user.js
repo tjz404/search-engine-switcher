@@ -1791,7 +1791,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               imageType: [null],
               splitTypeName: "",
               mainSelector: ".search-button",
-              buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;display:inline-flex;margin:0 0 0 12px;padding:0;height:40px;justify-content:center;align-items:center;flex-wrap:nowrap;vertical-align:top}#${def.const.leftButton},#${def.const.rightButton}{display:inline-block;margin:0 2px 0 0;height:40px}input{margin:0;height:40px;min-width:90px;border:2px solid #f6f7f8;background:linear-gradient(135deg,#00a1d6 0%,#00d4ff 100%);color:#fff;vertical-align:top;font-weight:600;font-size:15px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);-webkit-text-stroke:0 transparent;cursor:pointer;transition:all 0.3s ease}#${def.const.leftButton} input{padding:0 14px 1px 20px;border-radius:20px 0 0 20px}#${def.const.rightButton} input{padding:0 20px 1px 14px;border-radius:0 20px 20px 0}input:hover{background:linear-gradient(135deg,#00b5e5 0%,#00e5ff 100%);border-color:#fff;box-shadow:0 4px 12px rgba(0,161,214,0.4);transform:translateY(-1px)}`,
+              buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;display:inline-flex;margin:0 0 0 17px;padding:0;height:40px;justify-content:center;align-items:center;flex-wrap:nowrap;vertical-align:top}#${def.const.leftButton},#${def.const.rightButton}{display:inline-block;margin:0 2px 0 0;height:40px}input{margin:0;height:40px;min-width:90px;border:2px solid #f6f7f8;background:linear-gradient(135deg,#00a1d6 0%,#00d4ff 100%);color:#fff;vertical-align:top;font-weight:600;font-size:15px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);-webkit-text-stroke:0 transparent;cursor:pointer;transition:all 0.3s ease}#${def.const.leftButton} input{padding:0 14px 1px 20px;border-radius:20px 0 0 20px}#${def.const.rightButton} input{padding:0 20px 1px 14px;border-radius:0 20px 20px 0}input:hover{background:linear-gradient(135deg,#00b5e5 0%,#00e5ff 100%);border-color:#fff;box-shadow:0 4px 12px rgba(0,161,214,0.4);transform:translateY(-1px)}`,
               resultListProp: { qs: `.video-list .video-item,.bili-video-card`, delay: 10 },
               keywords: "em.keyword",
               antiRedirectFn: null,
@@ -2748,6 +2748,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               const searchBox = qS(".b_searchbox") || qS("input[name='q']");
               const searchBoxContainer = searchBox?.closest(".b_searchboxForm") || searchBox?.parentElement;
               if (!searchBox || !searchBoxContainer) return;
+              updateBingSearchBoxActions(searchBox, searchBoxContainer);
 
               const jumpButtonsContainer = cE("div", { id: "bing-custom-jump-buttons" });
               const jumpShadow = def.const.attachShadow.call(jumpButtonsContainer, { mode: "closed" });
@@ -2769,7 +2770,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               updateAdoptedStyleSheets(jumpShadow, jumpButtonsCss, "bing-jump-buttons");
 
               searchBoxContainer.style.position = "relative";
-              searchBox.style.paddingRight = "360px";
+              searchBox.style.paddingRight = "300px";
               searchBoxContainer.appendChild(jumpButtonsContainer);
 
               qA(".jump-btn", jumpShadow).forEach(btn => {
@@ -2788,6 +2789,63 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
                   }
                 });
               });
+            }
+
+            function updateBingSearchBoxActions(searchBox, searchBoxContainer) {
+              const voiceSelectors = [
+                ".mic_cont",
+                ".b_searchboxSubmit ~ .mic_cont",
+                ".b_icon.mic",
+                ".b_searchboxForm [aria-label*='voice' i]",
+                ".b_searchboxForm [title*='voice' i]",
+                ".b_searchboxForm [aria-label*='语音']",
+                ".b_searchboxForm [title*='语音']",
+                ".b_searchboxForm [aria-label*='microphone' i]",
+                ".b_searchboxForm [title*='microphone' i]",
+              ].join(",");
+              qA(voiceSelectors).forEach(node => {
+                node.style.setProperty("display", "none", "important");
+                node.style.setProperty("visibility", "hidden", "important");
+                node.style.setProperty("pointer-events", "none", "important");
+              });
+
+              const clearSelectors = [
+                "#sb_clt",
+                "#sb_clt a",
+                "#sw_clx",
+                ".sb_clrhov",
+                ".sw_clx",
+                ".b_searchboxForm .sw_clx",
+                ".b_searchboxForm [id*='clear' i]",
+                ".b_searchboxForm [class*='clear' i]",
+                ".b_searchboxForm [aria-label*='clear' i]",
+                ".b_searchboxForm [title*='clear' i]",
+                ".b_searchboxForm [aria-label*='清除']",
+                ".b_searchboxForm [title*='清除']",
+              ].join(",");
+              qA(clearSelectors, searchBoxContainer).forEach(clearButton => {
+                clearButton.style.setProperty("display", "inline-flex", "important");
+                clearButton.style.setProperty("visibility", "visible", "important");
+                clearButton.style.setProperty("position", "absolute", "important");
+                clearButton.style.setProperty("top", "50%", "important");
+                clearButton.style.setProperty("right", "8px", "important");
+                clearButton.style.setProperty("left", "auto", "important");
+                clearButton.style.setProperty("transform", "translateY(-50%)", "important");
+                clearButton.style.setProperty("z-index", "100000", "important");
+                clearButton.style.setProperty("pointer-events", "auto", "important");
+                clearButton.style.setProperty("align-items", "center", "important");
+                clearButton.style.setProperty("justify-content", "center", "important");
+                clearButton.style.setProperty("width", "36px", "important");
+                clearButton.style.setProperty("height", "36px", "important");
+                clearButton.style.setProperty("margin", "0", "important");
+                clearButton.style.setProperty("padding", "0", "important");
+                qA("*", clearButton).forEach(child => {
+                  child.style.setProperty("margin", "0", "important");
+                  child.style.setProperty("position", "static", "important");
+                  child.style.setProperty("transform", "none", "important");
+                });
+              });
+              searchBox.style.setProperty("padding-right", "300px", "important");
             }
 
             function setupScrollButton(buttonSet) {
