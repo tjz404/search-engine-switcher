@@ -25,6 +25,12 @@
 
 点击即可将当前搜索关键词带到对应搜索引擎，无需重新输入。
 
+## 预览
+
+![Bing 快捷跳转预览](images/Switcher/bing%20preview.png)
+
+![Bilibili 搜索跳转预览](images/Switcher/bilibili%20preview.png)
+
 ### 3. 按钮视觉优化
 
 对所有新增按钮及 Google 搜索按钮进行了统一的视觉升级：
