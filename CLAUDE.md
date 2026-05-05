@@ -41,3 +41,8 @@ The entire script (~3100 lines) is a single IIFE that bootstraps with three wind
 ## Language
 
 README and UI strings are bilingual (Chinese/English). The script detects locale via `checkLocalChineseLanguage()` and uses `IS_CHN` to toggle between Chinese and English button labels.
+
+## AI Assistant Operational Rules (CRITICAL)
+- **Prevent Truncation**: When using file editing tools (Write/Edit) on large files like `Google & Baidu Switcher.user.js` (~3100 lines), **NEVER** output more than 50 lines of code at once.
+- **Chunking**: You MUST split large modifications into multiple smaller chunks (≤ 50 lines per tool call) to prevent `[FATAL] TRUNCATED` stream errors.
+- **Targeted Edits Only**: Always use targeted replacements (Search/Replace or targeting specific line numbers) rather than attempting to rewrite or overwrite the entire file.
