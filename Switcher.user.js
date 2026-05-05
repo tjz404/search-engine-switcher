@@ -5,7 +5,7 @@
 // @name:zh-TW         搜尋引擎助手 (自用擴展版)
 // @name:ru            Помощник поисковой системы (Custom Fork)
 // @name:ja            検索エンジン助手 (Custom Fork)
-// @version            2026.05.04.1
+// @version            2026.05.04.3
 // @author             F9y4ng (forked & customized)
 // @description        Custom fork with Bilibili & Xiaohongshu support, Bing quick-jump buttons. Compatible with Baidu, Google, Bing, Duckduckgo, Yandex, Sogou, Qwant, Ecosia, You, Startpage, Brave, Yahoo, Yep, Mojeek, searXNG, Bilibili, Xiaohongshu and more.
 // @description:en     Custom fork adding Bilibili & Xiaohongshu engines, Bing quick-jump buttons (Google/Bilibili/Xiaohongshu). Supports engine switching, keyword highlighting, redirect removal, ad blocking, keyword filtering. Compatible with 20+ search engines.
@@ -1406,24 +1406,6 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
         }
 
         void (async function (getUpdateAddress) {
-          const bingCenteredTwoColumnCss =
-            `@media (min-width:1100px){` +
-            `body #b_header{box-sizing:border-box;width:min(72vw,1380px);margin:0 auto;text-align:center;background-color:#fafafa}` +
-            `body #b_content{display:flex;flex-direction:column;align-items:center;justify-content:center;margin-left:0!important;padding-left:0!important}` +
-            `#b_content aside,#b_content>#b_context,#b_content #relatedSearchesLGWContainer,#b_results #mfa_root,#b_results #adstop_gradiant_separator,.b_bza_pole,.lgw-slide-in{display:none!important}` +
-            `#b_content #b_results{box-sizing:border-box;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"xmain xmain";gap:0 18px;width:min(73vw,1400px);margin:0 auto!important;padding:0!important}` +
-            `#b_content #b_results>li:not(#mfa_root){box-sizing:border-box;z-index:1;width:100%!important;margin:0 0 25px!important;padding:12px 20px!important;border:1px solid rgba(0,0,0,.1);border-radius:5px;background-color:#fff;overflow:hidden;transition:border-color .25s cubic-bezier(.23,1,.32,1),box-shadow .25s cubic-bezier(.23,1,.32,1)}` +
-            `#b_content #b_results>li:not(#mfa_root):hover{border-color:rgba(0,0,0,.3);box-shadow:0 0 1px grey}` +
-            `#b_content>#b_results li:not(#mfa_root) h2{margin:-12px -20px 10px!important;padding:8px 20px 5px!important;border-radius:5px 5px 0 0;background-color:#f8f8f8}` +
-            `#b_results li.b_ans:nth-child(even),#b_results li.b_ans.b_top,#b_msg,#b_results>.b_pag,#b_results>li:has(nav[role="navigation"]),#b_results>li:has(.b_rs),#b_results>li:has(#relatedSearchesLGWContainer){grid-column:1 / -1}` +
-            `#b_content #b_pole{max-width:min(72vw,1380px);margin:0 auto}` +
-            `#b_results .b_algo .b_deep ul{width:50%}` +
-            `.carousel .items{max-width:min(72vw,1380px);overflow-x:auto;padding:0 0 10px!important}` +
-            `body.b_dark #b_header,.b_dark #b_content #b_results>li:not(#mfa_root){background-color:#292929}` +
-            `.b_dark #b_content>#b_results li:not(#mfa_root) h2{background-color:#242424}` +
-            `}` +
-            `@media (max-width:1099px){#b_content #b_results{display:block;width:auto;margin:0 10px!important}}`;
-
           const listSite = {
             baidu: {
               siteTypeID: 1,
@@ -1485,8 +1467,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               overrideCss:
                 `html{overflow-x:auto}.${def.const.scrollbarsV2}\\.width{width:max-content!important;z-index:999!important}@media (max-width:1363px){body{--searchbox_minwidth:436px}#sa_requery{margin:15px;border-top:0.5px dashed #ccc}.hasmic.hassbi .b_searchbox,.hasmic .b_searchbox{max-width:436px}.sa_as>:is(#sa_ul,#sa_requery){width:100%!important}}.hasmic.hassbi .b_searchboxForm.as_rsform.as_show .b_searchbox,.hasmic .b_searchboxForm.as_rsform .b_searchbox,#b_header .hasmic.hassbi .b_searchboxForm.as_rsform .b_searchbox.b_softkey,#b_header .hasmic .b_searchboxForm.as_rsform .b_searchbox.b_softkey{width:var(--searchbox_minwidth,638px)}` +
                 `#b_content{--smtc-ctrl-link-foreground-brand-rest:#3c3c3c}a,#b_content :is(.b_slidebar h2 a,.b_gwaDlTitle,#b_context .mediumCardTitle,main .b_tranthis,.nslist_card_title,.nscardlite_title,.nscardcal_title,.product-card-info--title,#b_results :is(li a.feedback-binded,li.b_vtl_deeplinks>a,li:not(:has(.b_loccardans)) :not(.b_rc_gb_sub_title,.mmtitle,#mt_tleWrp h2,#ns_mag_ht h2,.b_rcGbMod,.b_paractl)>a:not(.iacf_head,.vsb_tr_t,.b_wikiGbModHero,.wiki_seemore,.gs_mdlink,[role='button'],:has(.b_dynamicMrsSuggestionText),.acf_p_title,#imc_pbtn),.b_no a,.na_t,.l_ecrd_txt_gl>h2,.b_RichCardAnswerV2 .b_paractl>a)){color:#2440b3}#b_content #b_results .product-card-info--title{color:#2440b3!important}a:visited,#b_content :is(.b_slidebar h2 a,.b_gwaDlTitle,#b_context .mediumCardTitle,main .b_tranthis,.nslist_card_title,.nscardlite_title,.nscardcal_title,.product-card-info--title,#b_results :is(li a.feedback-binded,li.b_vtl_deeplinks>a,li:not(:has(.b_loccardans)) :not(.b_rc_gb_sub_title,.mmtitle,#mt_tleWrp h2,#ns_mag_ht h2,.b_rcGbMod,.b_paractl)>a:not(.iacf_head,.vsb_tr_t,.b_wikiGbModHero,.wiki_seemore,.gs_mdlink,[role='button'],:has(.b_dynamicMrsSuggestionText),.acf_p_title,#imc_pbtn),.b_no a,.na_t,.l_ecrd_txt_gl>h2,.b_RichCardAnswerV2 .b_paractl>a)):visited{color:#4007a2}#b_content #b_results li :is(h2>a,h3>a).${def.const.visited}{color:#4007a2!important}` +
-                `.b_dark #b_content{--smtc-ctrl-link-foreground-brand-rest:#d2d0ce;--alinkcol:#a2b7f4}.b_dark a,.b_dark #b_content :is(.b_slidebar h2 a,.b_gwaDlTitle,#b_context .mediumCardTitle,main .b_tranthis,.nslist_card_title,.nscardlite_title,.nscardcal_title,.product-card-info--title,#b_results :is(li a.feedback-binded,li.b_vtl_deeplinks>a,li:not(:has(.b_loccardans)) :not(.b_rc_gb_sub_title,.mmtitle,#mt_tleWrp h2,#ns_mag_ht h2,.b_rcGbMod,.b_paractl)>a:not(.iacf_head,.vsb_tr_t,.b_wikiGbModHero,.wiki_seemore,.gs_mdlink,[role='button'],:has(.b_dynamicMrsSuggestionText),.acf_p_title,#imc_pbtn),.b_no a,.na_t,.l_ecrd_txt_gl>h2,.b_RichCardAnswerV2 .b_paractl>a)){color:#a2b7f4}.b_dark #b_content #b_results .product-card-info--title{color:#a2b7f4!important}.b_dark a:visited,.b_dark #b_content :is(.b_slidebar h2 a,.b_gwaDlTitle,#b_context .mediumCardTitle,main .b_tranthis,.nslist_card_title,.nscardlite_title,.nscardcal_title,.product-card-info--title,#b_results :is(li a.feedback-binded,li.b_vtl_deeplinks>a,li:not(:has(.b_loccardans)) :not(.b_rc_gb_sub_title,.mmtitle,#mt_tleWrp h2,#ns_mag_ht h2,.b_rcGbMod,.b_paractl)>a:not(.iacf_head,.vsb_tr_t,.b_wikiGbModHero,.wiki_seemore,.gs_mdlink,[role='button'],:has(.b_dynamicMrsSuggestionText),.acf_p_title,#imc_pbtn),.b_no a,.na_t,.l_ecrd_txt_gl>h2,.b_RichCardAnswerV2 .b_paractl>a)):visited{color:#7b7fec}.b_dark #b_content #b_results li :is(h2>a,h3>a).${def.const.visited}{color:#7b7fec!important}` +
-                bingCenteredTwoColumnCss,
+                `.b_dark #b_content{--smtc-ctrl-link-foreground-brand-rest:#d2d0ce;--alinkcol:#a2b7f4}.b_dark a,.b_dark #b_content :is(.b_slidebar h2 a,.b_gwaDlTitle,#b_context .mediumCardTitle,main .b_tranthis,.nslist_card_title,.nscardlite_title,.nscardcal_title,.product-card-info--title,#b_results :is(li a.feedback-binded,li.b_vtl_deeplinks>a,li:not(:has(.b_loccardans)) :not(.b_rc_gb_sub_title,.mmtitle,#mt_tleWrp h2,#ns_mag_ht h2,.b_rcGbMod,.b_paractl)>a:not(.iacf_head,.vsb_tr_t,.b_wikiGbModHero,.wiki_seemore,.gs_mdlink,[role='button'],:has(.b_dynamicMrsSuggestionText),.acf_p_title,#imc_pbtn),.b_no a,.na_t,.l_ecrd_txt_gl>h2,.b_RichCardAnswerV2 .b_paractl>a)){color:#a2b7f4}.b_dark #b_content #b_results .product-card-info--title{color:#a2b7f4!important}.b_dark a:visited,.b_dark #b_content :is(.b_slidebar h2 a,.b_gwaDlTitle,#b_context .mediumCardTitle,main .b_tranthis,.nslist_card_title,.nscardlite_title,.nscardcal_title,.product-card-info--title,#b_results :is(li a.feedback-binded,li.b_vtl_deeplinks>a,li:not(:has(.b_loccardans)) :not(.b_rc_gb_sub_title,.mmtitle,#mt_tleWrp h2,#ns_mag_ht h2,.b_rcGbMod,.b_paractl)>a:not(.iacf_head,.vsb_tr_t,.b_wikiGbModHero,.wiki_seemore,.gs_mdlink,[role='button'],:has(.b_dynamicMrsSuggestionText),.acf_p_title,#imc_pbtn),.b_no a,.na_t,.l_ecrd_txt_gl>h2,.b_RichCardAnswerV2 .b_paractl>a)):visited{color:#7b7fec}.b_dark #b_content #b_results li :is(h2>a,h3>a).${def.const.visited}{color:#7b7fec!important}`,
               buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;z-index:6;display:inline-flex;margin:var(--margin,4px 0 0 0);padding:0 4px 0 0;width:auto;height:38px;min-width:180px;vertical-align:top;justify-content:center;align-items:center;flex-wrap:nowrap}#${def.const.leftButton},#${def.const.rightButton}{display:inline-block;margin:0 1px 0 0}input{box-sizing:border-box;height:38px;min-width:90px;border:1px solid #174ae4;background-color:#f7faff;color:#174ae4;font-weight:500;font-size:16px;line-height:100%;text-shadow:none;-webkit-text-stroke:0 transparent;cursor:pointer}#${def.const.leftButton} input{margin:0;padding:0 12px 1px 18px;border-radius:24px 0 0 24px}#${def.const.rightButton} input{margin:0;padding:0 18px 1px 12px;border-radius:0 24px 24px 0}:host(.${def.const.scrollspan}){margin:0!important;padding:4px 3px 0 8px!important;max-height:30px;vertical-align:top!important}.${def.const.scrollbars}{margin:0!important;padding:0 12px!important;max-height:30px;border-radius:4px!important;vertical-align:top!important}.${def.const.scrollbarsV2}{margin:0 0 0 1px!important;height:34px!important;border-radius:6px!important;padding:0 12px!important}input:hover{background:#f0f3f6;box-shadow:0 0 4px #174ae4;transition:background .1s linear,box-shadow .2s linear}`,
               darkModeCss: `:host(.${def.const.darkmode}) input{border:1px solid #a2b7f4;background:transparent;color:#a2b7f4}:host(.${def.const.darkmode}) input:hover{background:#a2b7f4;color:#333}`,
               resultListProp: {
@@ -1938,6 +1919,9 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
             </span>`;
           def.var.hlstyle = listCurrentSite.keywords ? `${listCurrentSite.keywords}{background-color:${bgcolor}!important;color:${fgcolor}!important;font-weight:600}` : ``;
           def.var.iconstyle = `.${def.notice.noticeX} .${def.notice.configuration} span.${def.notice.favicon},.${def.notice.card}__body-cover-image span.${def.notice.favicons}{background-color:transparent;background-image:${def.var.iconbg};background-repeat:no-repeat;}`;
+          def.var.gradientButtonStyle =
+            `#${def.const.leftButton} input,#${def.const.rightButton} input,input.${def.const.scrollbars},input.${def.const.scrollbarsV2}{outline:none!important;border:none!important;background-image:linear-gradient(to right,#77A1D3 0%,#79CBCA 51%,#77A1D3 100%)!important;background-size:200% auto!important;background-position:left center!important;color:#fff!important;box-shadow:0 0 20px #eee!important;text-align:center!important;text-decoration:none!important;text-transform:none!important;text-shadow:none!important;transition:background-position .5s ease,color .2s ease,box-shadow .2s ease!important}` +
+            `#${def.const.leftButton} input:hover,#${def.const.rightButton} input:hover,input.${def.const.scrollbars}:hover,input.${def.const.scrollbarsV2}:hover{background-position:right center!important;color:#fff!important;text-decoration:none!important;box-shadow:0 0 20px #eee!important;transform:none!important}`;
 
           function getQueryString() {
             if (currentSite.siteTypeID === newSiteType.YOU) {
@@ -2740,7 +2724,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
                 const buttonSection = cE("gb-button", { id: def.const.rndButtonID });
                 const shadow = def.const.attachShadow.call(buttonSection, { mode: "closed" });
                 const darkModeCssText = currentSite.darkModeCss ? `${currentSite.darkModeCss}` : ``;
-                const buttonCssText = `${currentSite.buttonCssText}${darkModeCssText}`;
+                const buttonCssText = `${currentSite.buttonCssText}${darkModeCssText}${def.var.gradientButtonStyle}`;
                 shadow.innerHTML = tTP.createHTML(def.var.button);
                 updateAdoptedStyleSheets(shadow, buttonCssText, def.const.buttons);
                 applyButtons(buttonSection, target, shadow);
@@ -2778,12 +2762,8 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
                 :host{position:absolute;top:50%;right:56px;transform:translateY(-50%);z-index:99999;display:inline-flex;align-items:center;pointer-events:auto}
                 .jump-buttons-wrapper{display:inline-flex;gap:8px;align-items:center}
                 .jump-btn{margin:0;padding:0 16px;height:36px;border:2px solid #f6f7f8;border-radius:18px;color:#fff;font-weight:600;font-size:14px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);cursor:pointer;transition:all 0.3s ease;white-space:nowrap}
-                .jump-btn-google{background:#0b57d0}
-                .jump-btn-bilibili{background:linear-gradient(135deg,#00a1d6 0%,#00d4ff 100%)}
-                .jump-btn-xiaohongshu{background:linear-gradient(135deg,#ff2442 0%,#ff6b6b 100%)}
-                .jump-btn-google:hover{border-color:#fff;box-shadow:0 4px 12px rgba(11,87,208,0.4);transform:translateY(-1px)}
-                .jump-btn-bilibili:hover{border-color:#fff;box-shadow:0 4px 12px rgba(0,161,214,0.4);transform:translateY(-1px)}
-                .jump-btn-xiaohongshu:hover{background:linear-gradient(135deg,#ff4458 0%,#ff7f7f 100%);border-color:#fff;box-shadow:0 4px 12px rgba(255,36,66,0.4);transform:translateY(-1px)}
+                .jump-btn-google,.jump-btn-bilibili,.jump-btn-xiaohongshu{border:none;background-image:linear-gradient(to right,#77A1D3 0%,#79CBCA 51%,#77A1D3 100%);background-size:200% auto;background-position:left center;box-shadow:0 0 20px #eee;text-transform:none;outline:none}
+                .jump-btn-google:hover,.jump-btn-bilibili:hover,.jump-btn-xiaohongshu:hover{background-position:right center;color:#fff;text-decoration:none;box-shadow:0 0 20px #eee;transform:none}
               `;
               jumpShadow.innerHTML = tTP.createHTML(jumpButtonsHtml);
               updateAdoptedStyleSheets(jumpShadow, jumpButtonsCss, "bing-jump-buttons");
