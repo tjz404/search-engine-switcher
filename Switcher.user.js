@@ -5,7 +5,7 @@
 // @name:zh-TW         搜尋引擎助手 (自用擴展版)
 // @name:ru            Помощник поисковой системы (Custom Fork)
 // @name:ja            検索エンジン助手 (Custom Fork)
-// @version            2026.05.06.1
+// @version            2026.5.6
 // @author             tjz404 (forked & customized)
 // @description        Custom fork with Bilibili & Xiaohongshu support, Bing quick-jump buttons. Compatible with Baidu, Google, Bing, Duckduckgo, Yandex, Sogou, Qwant, Ecosia, You, Startpage, Brave, Yahoo, Yep, Mojeek, searXNG, Bilibili, Xiaohongshu and more.
 // @description:en     Custom fork adding Bilibili & Xiaohongshu engines, Bing quick-jump buttons (Google/Bilibili/Xiaohongshu). Supports engine switching, keyword highlighting, redirect removal, ad blocking, keyword filtering. Compatible with 20+ search engines.
@@ -16,7 +16,7 @@
 // @icon               data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFC0lEQVR4nO2WbUxTVxjHj8IMWZbt05Yt28y2D3yQRN0++MVsmXFbNjBixbFpkSGvXUt5GRpkgOCgIsgqOANUQCXYOQUKCMqrtDAmiorSwioIytsoIL3ce1olQ+W/3KsFlYov8yUmPsn/w725J//fec7zPPcQ8jJexoscABwsFosLpfRTq9W6CIDTMzFmWfYjSmkux3EWSilsYll2YnBwsNxsNi99auaUUn+O48ZZlkODrgW7lAVIjM9DWuohHD3yF8xmBhzHTXZ2du4B4PhEzVmWDeZ32nq+AxvESfDekIbwHbUIV51F+E4dAuTZEK2IQU3VKSEjBoNBQwiZ80TMx8bGPuY4buLsGSPc3WIQvKcVYVrMUPChAXh4JKC0uEGAKCsri/pfxgCcKKULKKXVfHo9RfGQ5Brtmk9BFJux0jUGl7r7MTAwMLR48eI3H9nYarW+c7vQrtqKTFOgxXrZ3lnNbfJNqEJq8kFhnVKplD+q+SKO40x8ofHn+dvOQuxIUsPPJwUbdttP/b2Sakbh6ZEgAJSUlPxOCJn7UOYMw7xBKb1sMo1AFrgTP/imI0ypw0+7GhG4+Q/Ij12dMgmpnoC02Axp0RUEl1sQVjc5DVE3iS8/3ygA9PT09HV3dwdbLJa3HghAKY3lF23eqIJ/bKn9HdZNIuhAH2S5fyNNewWqE2OIK+6Fb1Yb5Eett+BqJvDVsk3o7zdhdNRsmxPXurq6tswKwLKs0aC/iFWiBITV3bQLEJB3CcmVJuhHgA5mWkc7JhCkaoO8YhySQyYsWxqG1e5xcP0iEnJJOppPtgkger1+/wxjAPMopdH8ECk6rIXXpsP2K7zcgo3qi2g3321uU2HbOPxyO4VvQ6v/vZ2xm5Bnt0K0Mg5VFSeFQaVWq/3vNH+FUlrJ07WcNWJLVA7WRtgHCFL3ocAwbtec1wUzIM1pR2jtjRlrZQVDcHeNBl9fRqPRQAh5zXbuUbz5vpxyrFn9C8JTqhB8eNAugP++LtRcun5fAF7RBZeFY7C33jtcLbQzy7I35s+f/4kAwLfcuZYLELlvhbzi2qztFXigD0Xts2SAAWR8Bmqu213vta0e6cpCoRbEYvFavuff5h/2ZpfDO77igf0tO8Ih8mA3jKP2AUrPU/jsbkXocfsF/H1sJbIyjwgAy5cv/46f8R/wD9lZ5VgXV/1QQyZgfzeUx0fQdg9E7fkxRCY2Iij1DPyyO2bUQejxSazw2I7Tze0YGhoyOzo6fiZcKhiGYfifjJu7YrpyZ1PdTQTm9yBkvxGZjQz2NVMoyv6BX3oLQuL/RFiMDpLkU/DbY5w+irpJeEaWQiLPEnZfWVlZSghxFmqgv78/lX+5XVkC11VJ8EpqgM+ucw+Ut7IZXtsaIFbo4JVyAusSdfCM0EC2ueYWRMpprE9pgjhRCzfPX+ErycDw8ChMJtOos7OzFyFknq0NnXp7e/U8RK1Oj58TixAQkvNYEvumw+2bGIREVQsQPpIcfLtGgYrac3z/86lnRCJROCHkvbsGUX5+/utNTU0FDMOM33nNehztTiuEx8otiIg+BtmPGVBszRPe19fXV7u4uHgTQt6/3ySes2TJkgURERGBCoUi5nGk1+ubeDNVRilErtEI9EmZuhc4ODh8PZX2pxVardbJYDAcuzMjw8PDY1KpNJYQ8i55RjE3MzPTR6PRqFUqVebChQv5tH9InkPMIYS8+jyMyQsT/wHRI0Gp4kJwPQAAAABJRU5ErkJggg==
 // @namespace          https://github.com/tjz404/search-engine-switcher
 // @supportURL         https://github.com/tjz404/search-engine-switcher/issues
-// @updateURL          none
+// @updateURL          https://github.com/tjz404/search-engine-switcher/raw/main/Switcher.user.js
 // @downloadURL        https://github.com/tjz404/search-engine-switcher/raw/main/Switcher.user.js
 // @match              *://www.baidu.com/*
 // @match              *://ipv6.baidu.com/*
