@@ -5,7 +5,7 @@
 // @name:zh-TW         搜尋引擎助手 (自用擴展版)
 // @name:ru            Помощник поисковой системы (Custom Fork)
 // @name:ja            検索エンジン助手 (Custom Fork)
-// @version            2026.5.6
+// @version            1.0.4
 // @author             tjz404 (forked & customized)
 // @description        Custom fork with Bilibili & Xiaohongshu support, Bing quick-jump buttons. Compatible with Baidu, Google, Bing, Duckduckgo, Yandex, Sogou, Qwant, Ecosia, You, Startpage, Brave, Yahoo, Yep, Mojeek, searXNG, Bilibili, Xiaohongshu and more.
 // @description:en     Custom fork adding Bilibili & Xiaohongshu engines, Bing quick-jump buttons (Google/Bilibili/Xiaohongshu). Supports engine switching, keyword highlighting, redirect removal, ad blocking, keyword filtering. Compatible with 20+ search engines.
@@ -1438,7 +1438,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               splitTypeName: "udm",
               mainSelector: "form button[type='submit']",
               overrideCss: `#pnnext>span:nth-child(2){clear:left}`,
-              buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;z-index:99999;display:inline-flex;margin:-1px 5px 0 -3px;justify-content:center;align-items:center;flex-wrap:nowrap}.ACRAdd{border-left:1px solid #dadce0;height:65%;padding:0 10px 0 0}#${def.const.leftButton},#${def.const.rightButton}{display:inline-block;margin:0 2px 0 0}input{margin:0;height:40px;min-width:90px;border:2px solid #f6f7f8;background:#0b57d0;color:#fff;box-shadow:0 0 2px #00000059;font-weight:500;font-size:16px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);-webkit-text-stroke:0 transparent;cursor:pointer;transition:all 0.3s ease}#${def.const.leftButton} input{padding:0 12px 1px 18px;border-radius:24px 0 0 24px}#${def.const.rightButton} input{padding:0 18px 1px 12px;border-radius:0 24px 24px 0}input:hover{opacity:.88;border-color:#fff;box-shadow:0 4px 12px rgba(11,87,208,0.4);transform:translateY(-1px)}:host(.${def.const.scrollspan}){min-height:24px!important}.${def.const.scrollbars}{display:inline-block;margin:0;padding-bottom:0!important;height:24px!important;font-size:12px!important}`,
+              buttonCssText: `:host(#${def.const.rndButtonID}){position:relative;z-index:99999;display:inline-flex;margin:-1px 5px 0 -3px;justify-content:center;align-items:center;flex-wrap:nowrap}.ACRAdd{border-left:1px solid #dadce0;height:65%;padding:0 10px 0 0}#${def.const.leftButton},#${def.const.rightButton}{display:inline-block;margin:0 2px 0 0}input{box-sizing:border-box;margin:0;height:40px;min-width:90px;border:2px solid #f6f7f8;background:#0b57d0;color:#fff;box-shadow:0 0 2px #00000059;font-weight:500;font-size:16px;line-height:36px;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,0.1);-webkit-text-stroke:0 transparent;cursor:pointer;transition:all 0.3s ease}#${def.const.leftButton} input{padding:0 12px 0 18px;border-radius:24px 0 0 24px}#${def.const.rightButton} input{padding:0 18px 0 12px;border-radius:0 24px 24px 0}input:hover{opacity:.88;border-color:#fff;box-shadow:0 4px 12px rgba(11,87,208,0.4);transform:translateY(-1px)}:host(.${def.const.scrollspan}){min-height:24px!important}.${def.const.scrollbars}{display:inline-block;margin:0;padding-bottom:0!important;height:24px!important;font-size:12px!important;line-height:20px!important}`,
               darkModeCss: `:host(.${def.const.darkmode}) input{background:#c2e7ff;color:#001d35}:host(.${def.const.darkmode}) .ACRAdd{border-left:1px solid #f8f9fa40}:host(.${def.const.darkmode}) input:hover{opacity:.85}`,
               resultListProp: { qs: `div.MjjYud div.Ww4FFb.vt6azd[data-hveid^="C"][data-hveid$="AA"]:not(:has(div[jscontroller="TvBckd"]))`, delay: 10 },
               keywords: ".aCOpRe em,.aCOpRe a em,.yXK7lf em,.yXK7lf a em,.st em,.st a em,.c2xzTb b,em.qkunPe",
@@ -2759,7 +2759,7 @@ void (function (ctx, uctx, sctx, searchEngineAssistant, arrayProxy, customFns) {
               const jumpButtonsCss = `
                 :host{position:absolute;top:50%;right:56px;transform:translateY(-50%);z-index:99999;display:inline-flex;align-items:center;pointer-events:auto}
                 .jump-buttons-wrapper{display:inline-flex;gap:8px;align-items:center}
-                .jump-btn{margin:0;padding:0 16px;height:36px;border:2px solid #f6f7f8;border-radius:18px;color:#fff;font-weight:600;font-size:14px;line-height:100%;text-shadow:0 1px 2px rgba(0,0,0,0.1);cursor:pointer;transition:all 0.3s ease;white-space:nowrap}
+                .jump-btn{display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0 16px;height:36px;border:2px solid #f6f7f8;border-radius:18px;color:#fff;font-weight:600;font-size:14px;line-height:normal;text-shadow:0 1px 2px rgba(0,0,0,0.1);cursor:pointer;transition:all 0.3s ease;white-space:nowrap}
                 .jump-btn-google,.jump-btn-bilibili,.jump-btn-xiaohongshu{border:none;background-image:linear-gradient(to right,#77A1D3 0%,#79CBCA 51%,#77A1D3 100%);background-size:200% auto;background-position:left center;box-shadow:0 0 20px #eee;text-transform:none;outline:none}
                 .jump-btn-google:hover,.jump-btn-bilibili:hover,.jump-btn-xiaohongshu:hover{background-position:right center;color:#fff;text-decoration:none;box-shadow:0 0 20px #eee;transform:none}
               `;
